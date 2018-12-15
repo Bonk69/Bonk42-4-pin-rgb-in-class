@@ -103,32 +103,19 @@ Button *MUXBUTTONS[] {};
 //Add multiplexed pots used to array below like this->  Pot *MUXPOTS[] {&MPO1, &MPO2, &MPO3, &MPO4, &MPO5, &MPO6.....};
 Pot *MUXPOTS[] {};
 //*******************************************************************
-//set led pins
- int B1R = 3;
- int B1G = 5;
-  int B1B = 6;
- int B2R = 11;
- int B2G = 9;
-  int B2B = 10;
-   int B3R = 8;
- int B3G = 13;
-  int B3B = 12;
-  
-  byte bank = 1; //set default bank/channel
+
+
+byte bank = 1; //set default bank/channel
   
 void setup() {
   MIDI.begin(MIDI_CHANNEL_OFF);
   //set all the led pins to outputs
-  pinMode(B1R, OUTPUT);
-  pinMode(B1G, OUTPUT);
-    pinMode(B1B, OUTPUT);
-      pinMode(B2R, OUTPUT);
-  pinMode(B2G, OUTPUT);
-    pinMode(B2B, OUTPUT);
-      pinMode(B3R, OUTPUT);
-  pinMode(B3G, OUTPUT);
-    pinMode(B3B, OUTPUT);
-   
+  for (int i = 0; i < NUMBER_BUTTONS; i = i + 1) {
+     pinMode(BUTTONS[i]->Br, OUTPUT);
+      pinMode(BUTTONS[i]->Bg, OUTPUT);
+      pinMode(BUTTONS[i]->Bb, OUTPUT);
+  }
+ 
   //Serial.begin(9600);
 }
 
